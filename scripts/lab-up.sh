@@ -3,7 +3,7 @@
 set -euo pipefail
 
 CONN="qemu:///system"
-VM="${VM:-kali}"
+VM="${VM:-debiantesting}"
 LAB_IP="192.168.122.1"
 
 echo "[1/3] Rede libvirt 'default'"

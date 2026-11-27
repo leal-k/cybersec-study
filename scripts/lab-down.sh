@@ -3,7 +3,7 @@
 set -euo pipefail
 
 CONN="qemu:///system"
-VM="${VM:-kali}"
+VM="${VM:-debiantesting}"
 
 if [ "$(virsh -c "$CONN" domstate "$VM")" = "running" ]; then
   virsh -c "$CONN" shutdown "$VM"

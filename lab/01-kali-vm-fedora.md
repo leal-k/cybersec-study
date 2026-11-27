@@ -94,4 +94,12 @@ virsh -c qemu:///system snapshot-list kali
 
 ## O que deu diferente no meu caso
 
-<!-- Preencher: erros, versões, decisões. Essa seção é a parte mais valiosa do documento. -->
+- **Repositório:** suspendi um `git push` com Ctrl+Z achando que cancelava (Ctrl+Z pausa; Ctrl+C cancela). Resolvido com `kill %1`. Também criei o remote com o texto de exemplo `SEU-USUARIO`; corrigido com `git remote set-url`.
+- **Fingerprint do GitHub:** na primeira conexão SSH, conferi o fingerprint ED25519 com o publicado na documentação do GitHub antes de responder `yes`. É a defesa contra man-in-the-middle na primeira conexão.
+- **`virt-host-validate`:** dois WARN inofensivos:
+  - `cgroup 'devices'`: falso alarme no cgroups v2 (Fedora); o controle de dispositivos é feito via eBPF e o libvirt cuida disso.
+  - `Secure Guest support`: computação confidencial (AMD SEV / Intel TDX), irrelevante num host próprio.
+- **Hash do Kali:** o SHA256 fica atrás de um botão ao lado do download na get-kali. Conferi e bateu. Isso garante integridade, mas não autenticidade, página e arquivo vêm da mesma origem.
+- **Nome da VM:** criei pelo virt-manager e ficou `debiantesting`, não `kali`. Ajustei o padrão nos scripts. Para listar VMs: `virsh -c qemu:///system list --all`.
+- **Senha perdida:** a senha nova parou de funcionar; `passwd` dava `Authentication token manipulation error`, que significa senha atual não reconhecida. Redefini para uma senha simples, aceitável só porque a VM está em NAT e sem SSH ligado. Lição: com acesso ao disco (`virt-customize`, GRUB), dá para trocar a senha sem saber a atual. Por isso existe criptografia de disco.
+- **Snapshot:** recriei o `limpo` depois de redefinir a senha, com a VM desligada.
