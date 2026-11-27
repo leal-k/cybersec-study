@@ -99,7 +99,11 @@ virsh -c qemu:///system snapshot-list kali
 - **`virt-host-validate`:** dois WARN inofensivos:
   - `cgroup 'devices'`: falso alarme no cgroups v2 (Fedora); o controle de dispositivos é feito via eBPF e o libvirt cuida disso.
   - `Secure Guest support`: computação confidencial (AMD SEV / Intel TDX), irrelevante num host próprio.
-- **Hash do Kali:** o SHA256 fica atrás de um botão ao lado do download na get-kali. Conferi e bateu. Isso garante integridade, mas não autenticidade, página e arquivo vêm da mesma origem.
+- **Hash e assinatura do Kali:** o SHA256 fica atrás de um botão ao lado do download na get-kali; conferi e bateu (integridade). Depois verifiquei a autenticidade com GPG:
+  - `SHA256SUMS` e `SHA256SUMS.gpg` baixados de `cdimage.kali.org/current/`, que **redirecionou para um mirror no Equador** (`mirror.cedia.org.ec`). Isso mostra por que o hash da página não basta: os arquivos vêm de servidores de terceiros.
+  - Chave `827C 8569 F251 8CC6 77FE CA1A ED65 462E C8D5 E4C5` conferida → `Good signature` → `kali-linux-2026.3-qemu-amd64.7z: OK`.
+  - O aviso `This key is not certified with a trusted signature` é esperado: eu não assinei a chave do Kali com uma chave minha; quem garante a autenticidade é a conferência da impressão digital.
+  - Pegadinha: `grep nome.7z` também casa com `nome.7z.torrent`. Ancorar com `$`.
 - **Nome da VM:** criei pelo virt-manager e ficou `debiantesting`, não `kali`. Ajustei o padrão nos scripts. Para listar VMs: `virsh -c qemu:///system list --all`.
 - **Senha perdida:** a senha nova parou de funcionar; `passwd` dava `Authentication token manipulation error`, que significa senha atual não reconhecida. Redefini para uma senha simples, aceitável só porque a VM está em NAT e sem SSH ligado. Lição: com acesso ao disco (`virt-customize`, GRUB), dá para trocar a senha sem saber a atual. Por isso existe criptografia de disco.
 - **Snapshot:** recriei o `limpo` depois de redefinir a senha, com a VM desligada.
