@@ -16,6 +16,7 @@ Hábito de bug bounty desde o dia 1: antes de atacar qualquer coisa, saber exata
 - A rede de casa (192.168.0.0/24 ou similar), o roteador, outros dispositivos.
 - Qualquer rede de trabalho ou Wi-Fi público.
 - Qualquer IP/domínio que não esteja na tabela acima.
+- A rede de casa (192.168.1.0/24), o roteador, outros dispositivos.
 
 ## Antes de rodar um scan
 

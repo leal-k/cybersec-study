@@ -1,18 +1,21 @@
 #!/usr/bin/env bash
 # Sobe o laboratório: rede libvirt -> Juice Shop (só na virbr0) -> VM Kali.
 set -euo pipefail
+export LC_ALL=C   # saídas do virsh/docker sempre em inglês, independente do idioma do sistema
 
 CONN="qemu:///system"
 VM="${VM:-debiantesting}"
 LAB_IP="192.168.122.1"
 
 echo "[1/3] Rede libvirt 'default'"
-if ! virsh -c "$CONN" net-info default | grep -Eq 'Active:\s+yes'; then
+redes_ativas=$(virsh -c "$CONN" net-list --name)
+if ! grep -qx default <<<"$redes_ativas"; then
   virsh -c "$CONN" net-start default
 fi
 
 echo "[2/3] Juice Shop em ${LAB_IP}:3000"
-if docker ps -a --format '{{.Names}}' | grep -qx juice-shop; then
+containers=$(docker ps -a --format '{{.Names}}')
+if grep -qx juice-shop <<<"$containers"; then
   docker start juice-shop >/dev/null
 else
   docker run -d --name juice-shop -p "${LAB_IP}:3000:3000" bkimminich/juice-shop >/dev/null
