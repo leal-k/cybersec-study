@@ -1,10 +1,8 @@
 # cybersec-study
 
-Meu caminho de estudo em segurança ofensiva, do básico ao bug bounty, documentado em público.
+Estudo em segurança ofensiva documentado em público.
 
-**Contexto:** formando em Ciência da Computação, com experiência em backend e QA. Já tenho base de redes, segurança e auditoria de TI, e de criptografia/forense em CTF. Agora estou estudando Linux, redes na prática e web.
-
-> ⚠️ **Ética e escopo.** Tudo aqui é feito contra o **meu próprio laboratório** ou contra plataformas que autorizam explicitamente (OverTheWire, PortSwigger, picoCTF, TryHackMe, HTB, programas de bug bounty/VDP dentro do escopo publicado). Nada de scan ou teste em sistemas de terceiros sem autorização.
+> ⚠️ **Ética e escopo.** Tudo aqui é feito contra o **meu próprio laboratório** ou contra plataformas que autorizam explicitamente.
 
 ## Roadmap
 
@@ -35,6 +33,6 @@ templates/           modelo de write-up
 
 ## Regras que sigo neste repositório
 
-- **Sem credenciais.** Não publico senhas do OverTheWire (regra deles) nem flags de máquinas ativas do HTB (proibido nos termos de uso). Publico o método.
+- **Sem credenciais.** Não publico senhas do OverTheWire nem flags de máquinas ativas do HTB. Só o método.
 - **Sem capturas cruas.** Arquivos `.pcap` ficam fora do Git (`.gitignore`) porque contêm senhas, mesmo as de laboratório.
 - **Crédito.** Cada write-up linka a plataforma de origem.
