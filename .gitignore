@@ -1,0 +1,26 @@
+# Capturas de rede: contêm senhas, mesmo de laboratório
+*.pcap
+*.pcapng
+*.cap
+
+# Imagens de VM e downloads grandes
+*.qcow2
+*.vmdk
+*.iso
+*.7z
+*.ova
+
+# Credenciais e segredos (Bandit, plataformas, tokens)
+*senha*
+*password*
+*secret*
+.env
+*.key
+id_rsa*
+id_ed25519*
+
+# Editor/sistema
+.vscode/
+.idea/
+*.swp
+.DS_Store
