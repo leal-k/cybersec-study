@@ -5,7 +5,7 @@ Escopo: **somente 192.168.122.0/24** (ver `lab/escopo.md`). Salvar toda saída e
 ## Parte 1: descoberta e portas (semana 2, segunda)
 
 ```bash
-mkdir -p ~/cybersec-journey/scans && cd ~/cybersec-journey/scans
+mkdir -p ~/cybersec-study/scans && cd ~/cybersec-study/scans
 
 # 1. Quem está vivo na rede?
 sudo nmap -sn 192.168.122.0/24 -oA 01-descoberta

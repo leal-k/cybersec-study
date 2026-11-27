@@ -1,4 +1,4 @@
-# cybersec-journey
+# cybersec-study
 
 Meu caminho de estudo em segurança ofensiva, do básico ao bug bounty, documentado em público.
 
